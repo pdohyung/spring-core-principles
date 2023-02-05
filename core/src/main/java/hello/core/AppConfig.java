@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class AppConfig {
-    @Bean(name = "mmm")
+    @Bean
     public MemberService memberService(){
         return new MemServiceImpl(memberRepository());
     }  // 생성자 주입
