@@ -11,8 +11,10 @@ import org.springframework.context.annotation.*;
         excludeFilters = @ComponentScan.Filter(type =  FilterType.ANNOTATION, classes = Configuration.class)
 )
 public class AutoAppConfig {
+/*
     @Bean(name="memoryMemberRepository")
     MemoryMemberRepository memberRepository(){
         return new MemoryMemberRepository();
     }
+*/
 }
