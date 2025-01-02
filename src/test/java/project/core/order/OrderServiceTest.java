@@ -1,16 +1,24 @@
 package project.core.order;
 
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import project.core.AppConfig;
 import project.core.user.Grade;
 import project.core.user.User;
 import project.core.user.UserService;
-import project.core.user.UserServiceImpl;
 
 class OrderServiceTest {
 
-    UserService userService = new UserServiceImpl();
-    OrderService orderService = new OrderServiceImpl();
+    UserService userService;
+    OrderService orderService;
+
+    @BeforeEach
+    void beforeEach() {
+        AppConfig appConfig = new AppConfig();
+        userService = appConfig.userService();
+        orderService = appConfig.orderService();
+    }
 
     @Test
     void createOrder() {

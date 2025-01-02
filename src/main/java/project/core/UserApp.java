@@ -1,14 +1,12 @@
 package project.core;
 
-import project.core.user.Grade;
-import project.core.user.User;
-import project.core.user.UserService;
-import project.core.user.UserServiceImpl;
+import project.core.user.*;
 
 public class UserApp {
 
     public static void main(String[] args) {
-        UserService userService = new UserServiceImpl();
+        AppConfig appConfig = new AppConfig();
+        UserService userService = appConfig.userService();
         User user = new User(1L, "userA", Grade.VIP);
         userService.join(user);
 
