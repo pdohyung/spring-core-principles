@@ -1,15 +1,18 @@
 package project.core.order;
 
 import project.core.discount.DiscountPolicy;
-import project.core.discount.FixDiscountPolicy;
-import project.core.user.MemoryUserRepository;
 import project.core.user.User;
 import project.core.user.UserRepository;
 
 public class OrderServiceImpl implements OrderService {
 
-    private final UserRepository userRepository = new MemoryUserRepository();
-    private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
+    private final UserRepository userRepository;
+    private final DiscountPolicy discountPolicy;
+
+    public OrderServiceImpl(UserRepository userRepository, DiscountPolicy discountPolicy) {
+        this.userRepository = userRepository;
+        this.discountPolicy = discountPolicy;
+    }
 
     @Override
     public Order createOrder(Long userId, String itemName, int itemPrice) {

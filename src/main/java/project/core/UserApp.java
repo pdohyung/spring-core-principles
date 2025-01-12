@@ -1,14 +1,18 @@
 package project.core;
 
-import project.core.user.Grade;
-import project.core.user.User;
-import project.core.user.UserService;
-import project.core.user.UserServiceImpl;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import project.core.user.*;
 
 public class UserApp {
 
     public static void main(String[] args) {
-        UserService userService = new UserServiceImpl();
+//        AppConfig appConfig = new AppConfig();
+//        UserService userService = appConfig.userService();
+
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+        UserService userService = applicationContext.getBean("userService", UserService.class);
+
         User user = new User(1L, "userA", Grade.VIP);
         userService.join(user);
 

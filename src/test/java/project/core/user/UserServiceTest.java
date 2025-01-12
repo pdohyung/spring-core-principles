@@ -1,11 +1,19 @@
 package project.core.user;
 
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import project.core.AppConfig;
 
 class UserServiceTest {
 
-    UserService userService = new UserServiceImpl();
+    UserService userService;
+
+    @BeforeEach
+    void beforeEach() {
+        AppConfig appConfig = new AppConfig();
+        userService = appConfig.userService();
+    }
 
     @Test
     void join() {
