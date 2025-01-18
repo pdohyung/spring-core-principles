@@ -17,16 +17,19 @@ public class AppConfig {
 
     @Bean
     public UserService userService() {
+        System.out.println("Call AppConfig.userService");
         return new UserServiceImpl(userRepository());
     }
 
     @Bean
     public UserRepository userRepository() {
+        System.out.println("Call AppConfig.userRepository");
         return new MemoryUserRepository();
     }
 
     @Bean
     public OrderService orderService() {
+        System.out.println("Call AppConfig.orderService");
         return new OrderServiceImpl(userRepository(), discountPolicy());
     }
 
